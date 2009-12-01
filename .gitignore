@@ -3,3 +3,4 @@ log/*.log
 tmp/**/*
 log/*.pid
 config/database.yml
+db/development.sqlite3
