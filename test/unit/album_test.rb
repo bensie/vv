@@ -2,17 +2,16 @@ require 'test_helper'
 
 class AlbumTest < ActiveSupport::TestCase
 
+  Factory.define :artist do |artist|
+    artist.name "Miles Davis"
+  end
+
   Factory.define :album do |album|
     album.title   "Kind of Blue"
     album.year    1959
     album.quality "mint"
-    album.association :artist, :factory => :artist
   end
-  
-  Factory.define :artist do |artist|
-    artist.name "Miles Davis"
-  end
-  
+    
   context "An Album Instance" do
     setup do
       @album = Factory(:album)
@@ -32,11 +31,12 @@ class AlbumTest < ActiveSupport::TestCase
     
     context "has an Artist" do
       setup do
-        @album.artist = Factory(:artist)
+        @artist = Factory(:artist)
+        @artist.albums.create!(:title => "Foo Bar", :year => 2009, :quality => "mint")
       end
 
       should "have an artist" do
-        assert_equal true, @album.artist.kind_of?(Artist)
+        assert_equal @artist, Album.last.artist
       end
     end
     
@@ -75,8 +75,6 @@ class AlbumTest < ActiveSupport::TestCase
       end
     end
     
-    
   end
-  
 
 end
