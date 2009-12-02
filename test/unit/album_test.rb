@@ -15,6 +15,7 @@ class AlbumTest < ActiveSupport::TestCase
   context "An Album Instance" do
     setup do
       @album = Factory(:album)
+      @album.artist_id = Factory(:artist).id
     end
 
     should "return its name" do
@@ -27,6 +28,10 @@ class AlbumTest < ActiveSupport::TestCase
     
     should "return its quality" do
       assert_equal "mint", @album.quality
+    end
+    
+    should "return its artist" do
+      assert_equal "Miles Davis", @album.artist.name
     end
     
     context "has an Artist" do
