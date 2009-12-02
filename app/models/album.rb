@@ -9,6 +9,7 @@ class Album < ActiveRecord::Base
   # validates_attachment_presence :artwork
   validates_attachment_content_type :artwork, :content_type => ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png']
   
+  has_many :songs
 
   belongs_to :artist
   
