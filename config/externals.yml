@@ -1,0 +1,4 @@
+vendor/plugins/paperclip:
+    :type: git
+    :repository: git://github.com/thoughtbot/paperclip.git
+    :revision: 808d295086a8d363e69daed1f57449164c0232e4
