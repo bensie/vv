@@ -37,15 +37,13 @@ class AlbumTest < ActiveSupport::TestCase
     
     context "has artwork" do
       setup do
-        @artist = Factory(:miles)
-        
+        @album = Factory(:miles_ahead)
+        @album.artwork = File.open(RAILS_ROOT + "/test/fixtures/testImage.png")
       end
 
-      # should_have_attached_file :artwork
-      # should_validate_attachment_content_type :artwork, :valid => ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png']
-
       should "description" do
-        
+        assert_contains @album.artwork.url, /(.*)\?/
+        assert_equal "image/png", @album.artwork.content_type
       end
     end
     
