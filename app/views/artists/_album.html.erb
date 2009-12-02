@@ -1,0 +1,13 @@
+<div class="fields">
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :year %>
+  <%= f.text_field :year %>
+
+  <%= f.label :quality %>
+  <%= f.select :quality, %w(mint good average poor), :include_blank => "-select-" %>
+  
+  <%= remove_child_link "remove", f %>
+
+</div>

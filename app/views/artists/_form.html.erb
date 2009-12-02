@@ -4,5 +4,16 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
+  
+  <h3>Albums</h3>
+  
+  <% f.fields_for :albums do |album| %>
+    <%= render :partial => 'album', :locals => { :f => album }%>
+  <% end %>
+  
+  <p><%= add_child_link "New Album", :albums %></p>
+  <%= new_child_fields_template(f, :albums)%>
+  
+  
   <p><%= f.submit "Submit" %></p>
 <% end %>
