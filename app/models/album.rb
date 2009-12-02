@@ -1,5 +1,15 @@
 class Album < ActiveRecord::Base
 
+  has_attached_file :artwork,
+                    :styles => {
+                      :thumbnail => "100x100#",
+                      :cover => "400x400#"
+                    }
+
+  validates_attachment_presence :artwork
+  validates_attachment_content_type :artwork, :content_type => ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png']
+  
+
   belongs_to :artist
   
   # validates_presence_of :artist
