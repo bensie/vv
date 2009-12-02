@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 require 'shoulda'
 require 'factory_girl'
+require File.expand_path(File.dirname(__FILE__) + "/factories.rb")
 
 class ActiveSupport::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
