@@ -5,3 +5,4 @@ log/*.pid
 config/database.yml
 db/development.sqlite3
 db/test.sqlite3
+public/system/*

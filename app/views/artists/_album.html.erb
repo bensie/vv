@@ -8,6 +8,9 @@
   <%= f.label :quality %>
   <%= f.select :quality, %w(mint good average poor), :include_blank => "-select-" %>
   
+  <%= f.label :artwork, "Artwork" %>
+  <%= f.file_field :artwork %>
+  
   <%= remove_child_link "remove", f %>
 
 </div>

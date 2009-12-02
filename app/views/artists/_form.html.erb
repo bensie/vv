@@ -1,4 +1,4 @@
-<% form_for @artist do |f| %>
+<% form_for @artist, :html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
