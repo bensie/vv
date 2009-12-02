@@ -35,6 +35,21 @@ class AlbumTest < ActiveSupport::TestCase
       end
     end
     
+    context "has artwork" do
+      setup do
+        @artist = Factory(:miles)
+        
+      end
+
+      # should_have_attached_file :artwork
+      # should_validate_attachment_content_type :artwork, :valid => ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png']
+
+      should "description" do
+        
+      end
+    end
+    
+    
     context "testing time-related named scopes" do
       setup do
         @earlier_album = Factory(:kind_of_blue, :title => "Miles Ahead", :year => 1957)
