@@ -1,10 +1,12 @@
 class ArtistsController < ApplicationController
+  before_filter :get_artist, :only => [:show, :edit, :update, :destroy]
+
   def index
     @artists = Artist.all
   end
   
   def show
-    @artist = Artist.find(params[:id])
+    render
   end
   
   def new
@@ -23,11 +25,10 @@ class ArtistsController < ApplicationController
   end
   
   def edit
-    @artist = Artist.find(params[:id])
+    render
   end
   
   def update
-    @artist = Artist.find(params[:id])
     if @artist.update_attributes(params[:artist])
       flash[:notice] = "Successfully updated artist."
       redirect_to @artist
@@ -37,9 +38,14 @@ class ArtistsController < ApplicationController
   end
   
   def destroy
-    @artist = Artist.find(params[:id])
     @artist.destroy
     flash[:notice] = "Successfully destroyed artist."
     redirect_to artists_url
+  end
+  
+  protected
+  
+  def get_artist
+    @artist = Artist.find(params[:id])
   end
 end
