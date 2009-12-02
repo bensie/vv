@@ -1,19 +1,10 @@
 require 'test_helper'
 
 class ArtistTest < ActiveSupport::TestCase
-  Factory.define :artist do |artist|
-    artist.name "Miles Davis"
-  end
-  
-  Factory.define :album do |album|
-    album.title "Kind of Blue"
-    album.year  1959
-    album.quality "mint"
-  end
     
   context "An Artist Instance" do
     setup do
-      @artist = Factory(:artist)
+      @artist = Factory(:miles)
     end
 
     should "return its name" do

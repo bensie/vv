@@ -1,21 +1,11 @@
 require 'test_helper'
 
 class AlbumTest < ActiveSupport::TestCase
-
-  Factory.define :artist do |artist|
-    artist.name "Miles Davis"
-  end
-
-  Factory.define :album do |album|
-    album.title   "Kind of Blue"
-    album.year    1959
-    album.quality "mint"
-  end
     
   context "An Album Instance" do
     setup do
-      @album = Factory(:album)
-      @album.artist_id = Factory(:artist).id
+      @album = Factory(:kind_of_blue)
+      @album.artist_id = Factory(:miles).id
     end
 
     should "return its name" do
@@ -36,7 +26,7 @@ class AlbumTest < ActiveSupport::TestCase
     
     context "has an Artist" do
       setup do
-        @artist = Factory(:artist)
+        @artist = Factory(:miles)
         @artist.albums.create!(:title => "Foo Bar", :year => 2009, :quality => "mint")
       end
 
@@ -47,7 +37,7 @@ class AlbumTest < ActiveSupport::TestCase
     
     context "testing time-related named scopes" do
       setup do
-        @earlier_album = Factory(:album, :title => "Miles Ahead", :year => 1957)
+        @earlier_album = Factory(:kind_of_blue, :title => "Miles Ahead", :year => 1957)
       end
 
       should "return earliest album" do
@@ -63,7 +53,7 @@ class AlbumTest < ActiveSupport::TestCase
     
     context "testing album condition" do
       setup do
-        @good_album = Factory(:album, :title => "Miles Ahead", :year => 1957, :quality => "good")
+        @good_album = Factory(:kind_of_blue, :title => "Miles Ahead", :year => 1957, :quality => "good")
       end
 
       should "return albums in mint condition" do
