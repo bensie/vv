@@ -6,6 +6,15 @@
 </p>
 
 <p>
+  <strong>Albums:</strong>
+  <ul>
+    <% @artist.albums.each do |album | %>
+    <li><%= album.title %> (<%= album.year%>) in <%= album.quality %> condition</li>
+    <% end %>    
+  </ul>
+</p>
+
+<p>
   <%= link_to "Edit", edit_artist_path(@artist) %> |
   <%= link_to "Destroy", @artist, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", artists_path %>

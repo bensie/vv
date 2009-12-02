@@ -1,12 +1,12 @@
 class ArtistsController < ApplicationController
-  before_filter :get_artist, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_artist, :only => [:edit, :update, :destroy]
 
   def index
     @artists = Artist.all
   end
   
   def show
-    render
+    @artist = Artist.find(params[:id], :include => :albums)
   end
   
   def new
