@@ -14,6 +14,10 @@
     album.year  1959
     album.quality "mint"
     album.artist { |artist| artist.association(:miles) }
+    album.artwork_file_name "image1.jpg"
+    album.artwork_content_type "image/jpeg"
+    album.artwork_file_size 1234567
+    album.artwork_updated_at Time.now
   end
 
   Factory.define :miles_ahead, :class => :album do |album|
@@ -22,4 +26,3 @@
     album.quality "mint"
     album.artist { |artist| artist.association(:miles) }
   end
-  

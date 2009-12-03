@@ -35,6 +35,19 @@ class AlbumTest < ActiveSupport::TestCase
       end
     end
     
+    context "has artwork" do
+      setup do
+        @album = Factory(:miles_ahead)
+        @album.artwork = File.open(RAILS_ROOT + "/test/fixtures/testImage.png")
+      end
+
+      should "description" do
+        assert_contains @album.artwork.url, /(.*)\?/
+        assert_equal "image/png", @album.artwork.content_type
+      end
+    end
+    
+    
     context "testing time-related named scopes" do
       setup do
         @earlier_album = Factory(:kind_of_blue, :title => "Miles Ahead", :year => 1957)
