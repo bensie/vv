@@ -4,7 +4,8 @@
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag "jquery", 'application' %>
+    <%= javascript_include_tag "jquery", 'application', "facybox" %>
+    <%= stylesheet_link_tag 'facybox_urls', 'facybox' %>
     <%= yield(:head) %>
   </head>
   <body>

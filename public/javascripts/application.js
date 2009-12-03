@@ -17,4 +17,9 @@ $(function() {
     $(this).parents('.fields').hide();
     return false;
   });
+  
+  // FacyBox
+  $('a[rel*=facybox]').facybox()
 });
+
+
