@@ -1,4 +1,8 @@
+require 'httparty'
+
 class Album < ActiveRecord::Base
+
+  include HTTParty
 
   has_attached_file :artwork,
                     :styles => {
@@ -19,5 +23,20 @@ class Album < ActiveRecord::Base
   named_scope :latest, :order => "year DESC", :limit => 1
   
   named_scope :quality, lambda { |quality| { :conditions => ['quality = ?', quality] } }  
+
+  def get_price
+    begin
+      Album.post(
+        "http://chadfowler.com:9090/pricing",
+        :body => [{
+          :name => title, :artist => artist.name
+        }].to_json
+      ).first["price"]      
+    rescue Errno::ECONNREFUSED
+      "N/A"
+    rescue
+      "Foo"
+    end
+  end
 
 end

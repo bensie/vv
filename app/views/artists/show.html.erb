@@ -9,7 +9,7 @@
   <strong>Albums:</strong>
   <ul>
     <% @artist.albums.each do |album | %>
-    <li><%= image_tag(album.artwork.url(:thumbnail))%><%= album.title %> (<%= album.year%>) in <%= album.quality %> condition</li>
+    <li><%= image_tag(album.artwork.url(:thumbnail))%><%= album.title %> (<%= album.year%>) in <%= album.quality %> condition ($<%= album.get_price %>)</li>
     <% end %>    
   </ul>
 </p>

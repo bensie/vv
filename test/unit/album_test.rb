@@ -41,7 +41,7 @@ class AlbumTest < ActiveSupport::TestCase
         @album.artwork = File.open(RAILS_ROOT + "/test/fixtures/testImage.png")
       end
 
-      should "description" do
+      should "have proper original image" do
         assert_contains @album.artwork.url, /(.*)\?/
         assert_equal "image/png", @album.artwork.content_type
       end
@@ -82,7 +82,7 @@ class AlbumTest < ActiveSupport::TestCase
         assert_not_equal "mint", @albums.first.quality
       end
     end
-    
+        
   end
 
 end
